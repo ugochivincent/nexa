@@ -1,5 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/js/app.js"></script>const SUPABASE_URL = "https://xoysbrevasfvfqmrjuiy.supabase.co/rest/v1/";
+const SUPABASE_URL="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable__lSYAn7L2040FleoZxNydg_ucV1LVVn";
 
 const supabaseClient = window.supabase.createClient(
@@ -21,7 +20,10 @@ authForm.addEventListener("submit", async (event) => {
 
   const email = emailInput.value.trim();
 
-  if (!email) return;
+  if (!email) {
+    authMessage.textContent = "Please enter your email.";
+    return;
+  }
 
   authMessage.textContent = "Sending sign-in link...";
 
@@ -30,12 +32,13 @@ authForm.addEventListener("submit", async (event) => {
   });
 
   if (error) {
+    console.error(error);
     authMessage.textContent = error.message;
     return;
   }
 
   authMessage.textContent =
-    "Check your email for the Nexa sign-in link.";
+    "Sign-in link sent! Check your email.";
 });
 
 async function checkUser() {
@@ -46,7 +49,6 @@ async function checkUser() {
   if (session) {
     authSection.style.display = "none";
     profileSection.style.display = "block";
-
     userEmail.textContent = session.user.email;
   } else {
     authSection.style.display = "block";
@@ -56,7 +58,7 @@ async function checkUser() {
 
 logoutButton.addEventListener("click", async () => {
   await supabaseClient.auth.signOut();
-  checkUser();
+  await checkUser();
 });
 
 checkUser();
