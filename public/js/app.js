@@ -1,4 +1,5 @@
-const SUPABASE_URL = "https://xoysbrevasfvfqmrjuiy.supabase.co/rest/v1/";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/app.js"></script>const SUPABASE_URL = "https://xoysbrevasfvfqmrjuiy.supabase.co/rest/v1/";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable__lSYAn7L2040FleoZxNydg_ucV1LVVn";
 
 const supabaseClient = window.supabase.createClient(
