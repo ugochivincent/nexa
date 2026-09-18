@@ -1,5 +1,5 @@
-const SUPABASE_URL="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable__lSYAn7L2040FleoZxNydg_ucV1LVVn";
+const SUPABASE_URL = "PASTE_YOUR_PROJECT_URL_HERE";
+const SUPABASE_PUBLISHABLE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
@@ -33,12 +33,12 @@ authForm.addEventListener("submit", async (event) => {
 
   if (error) {
     console.error(error);
-    authMessage.textContent = error.message;
+    authMessage.textContent = "Error: " + error.message;
     return;
   }
 
   authMessage.textContent =
-    "Sign-in link sent! Check your email.";
+    "Check your email for the Nexa sign-in link.";
 });
 
 async function checkUser() {
